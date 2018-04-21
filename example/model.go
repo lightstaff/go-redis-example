@@ -13,6 +13,3 @@ type Contact struct {
 	Email  string
 	UserID string
 }
-
-// UserMap is user map
-type UserMap = map[string]*User

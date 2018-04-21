@@ -160,7 +160,7 @@ func (s *ServiceImpl) Remove() error {
 	return nil
 }
 
-func (s *ServiceImpl) set(um UserMap) error {
+func (s *ServiceImpl) set(um map[string]*User) error {
 	if s.Conn == nil {
 		return errors.New("not initialized redis conn")
 	}
@@ -177,12 +177,12 @@ func (s *ServiceImpl) set(um UserMap) error {
 	return nil
 }
 
-func (s *ServiceImpl) get() (UserMap, error) {
+func (s *ServiceImpl) get() (map[string]*User, error) {
 	if s.Conn == nil {
 		return nil, errors.New("not initialized redis conn")
 	}
 
-	um := make(UserMap)
+	um := make(map[string]*User)
 
 	exists, err := redis.Int(s.Conn.Do("EXISTS", "users"))
 	if err != nil {
