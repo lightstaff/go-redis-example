@@ -25,10 +25,6 @@ type ServiceImpl struct {
 
 // SetUser is set user
 func (s *ServiceImpl) SetUser(u *User) error {
-	if s.Conn == nil {
-		return errors.New("not initialized redis conn")
-	}
-
 	um, err := s.get()
 	if err != nil {
 		return err
@@ -47,10 +43,6 @@ func (s *ServiceImpl) SetUser(u *User) error {
 
 // SetContact is set contact
 func (s *ServiceImpl) SetContact(c *Contact) error {
-	if s.Conn == nil {
-		return errors.New("not initialized redis conn")
-	}
-
 	um, err := s.get()
 	if err != nil {
 		return err
@@ -79,10 +71,6 @@ func (s *ServiceImpl) SetContact(c *Contact) error {
 
 // GetUserViews is get user views
 func (s *ServiceImpl) GetUserViews() ([]*UserView, error) {
-	if s.Conn == nil {
-		return nil, errors.New("not initialized redis conn")
-	}
-
 	um, err := s.get()
 	if err != nil {
 		return nil, err
@@ -112,11 +100,8 @@ func (s *ServiceImpl) GetUserViews() ([]*UserView, error) {
 	return users, nil
 }
 
+// GetUserView is get user view by id
 func (s *ServiceImpl) GetUserView(id string) (*UserView, error) {
-	if s.Conn == nil {
-		return nil, errors.New("not initialized redis conn")
-	}
-
 	um, err := s.get()
 	if err != nil {
 		return nil, err
