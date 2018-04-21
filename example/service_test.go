@@ -74,4 +74,9 @@ func TestService(t *testing.T) {
 	}
 
 	t.Logf("get user views. data: %v", uvs)
+
+	// remove
+	if err := s.Remove(); err != nil {
+		t.Fatal(err)
+	}
 }
